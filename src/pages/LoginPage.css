@@ -1,0 +1,153 @@
+.login-container {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d1b1b 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 350px;
+  padding: 40px;
+  background: rgba(30, 30, 30, 0.95);
+  border: 2px solid;
+  border-radius: 30px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    border-color: #e63946;
+    height: 500px;
+
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.login-header h1 {
+  font-size: 36px;
+  margin: 0;
+  color: white;
+}
+
+.login-header h1::after {
+  content: 'Seat';
+  color: #e63946;
+  margin-left: 5px;
+}
+
+.tagline {
+  font-size: 24px;
+  color: #f4a261;
+  margin: 10px 0 0 0;
+  font-weight: bold;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #999;
+  margin: 10px 0 0 0;
+}
+
+.login-form {
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 12px;
+  color: #aaa;
+  margin-bottom: 8px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #444;
+  background: #2a2a2a;
+  color: white;
+  border-radius: 5px;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #e63946;
+  background: #333;
+}
+
+.form-group input::placeholder {
+  color: #666;
+}
+
+.forgot-password {
+  display: block;
+  text-align: right;
+  color: #999;
+  text-decoration: none;
+  font-size: 13px;
+  margin-top: 10px;
+  transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+  color: #e63946;
+}
+
+.divider {
+  text-align: center;
+  color: #666;
+  margin: 25px 0;
+  font-size: 12px;
+  position: relative;
+}
+
+.divider::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background: #444;
+}
+
+.divider::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background: #444;
+}
+
+
+
+.signup-text {
+  text-align: center;
+  color: #999;
+  font-size: 14px;
+  margin: 0;
+}
+
+.signup-link {
+  color: #f4a261;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.signup-link:hover {
+  color: #e63946;
+}
