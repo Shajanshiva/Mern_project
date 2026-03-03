@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Button from '../components/Button';
 import './LoginPage.css';
+import { Link } from 'react-router-dom';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -48,8 +49,9 @@ export default function LoginPage() {
           </div>
 
           <a href="#" className="forgot-password">Forgot password?</a>
-
+          <Link to='/index'>
           <Button type="submit" />
+          </Link>
         </form>
 
 
