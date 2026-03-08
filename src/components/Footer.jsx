@@ -2,36 +2,52 @@ import React from "react";
 
 const Footer = () => {
   return (
-      <div style={{ margin: "0px", backgroundColor: "black", height: "400px" }}>
-              
-          <hr style={{width:"vwpx" ,margin:"0px", color:"rgba(0, 0, 0, 0.9)"
-}}></hr>
-     
-      <div style={{display:"flex", justifyContent:"space-around", alignItems:"center", paddingTop:"30px"}}>
-        <div>
-          <h2 style={{ color: "red" }}>StageSeat</h2>
-          <p style={{color:"white", width:"300px"}}>
+    <div style={{ backgroundColor: "#121212", color: "white", padding: "40px 0px" }}>
+      <hr style={{ border: "0.5px solid rgba(255, 255, 255, 0.1)", marginBottom: "30px", margin: "0 40px" }} />
+
+      <div style={{
+        display: "flex",
+        justifyContent: "space-evenly",
+        alignItems: "flex-start",
+        flexWrap: "wrap",
+        padding: "0 20px"
+      }}>
+        {/* Branding Column */}
+        <div style={{ width: "300px", marginBottom: "30px" }}>
+          <h2 style={{ color: "red", marginBottom: "15px" }}>StageSeat</h2>
+          <p style={{ color: "lightgray", lineHeight: "1.6" }}>
             The premium theatre experience. Book tickets for the best shows in
-            town with ease and elegance.
+            town with ease and eloquence.
           </p>
         </div>
-        <div style={{color:"white"}}>
-          <h3>Explore</h3>
-          <p>Featured Shows</p>
-          <p>Popular theaters</p>
-          <p>Gift Card</p>  
-          <p>Offers</p>
+
+        {/* Explore Column */}
+        <div style={{ marginBottom: "30px" }}>
+          <h3 style={{ color: "white", marginBottom: "15px" }}>Explore</h3>
+          <p style={{ color: "lightgray", margin: "8px 0", cursor: 'pointer' }}>Featured Shows</p>
+          <p style={{ color: "lightgray", margin: "8px 0", cursor: 'pointer' }}>Popular Theaters</p>
+          <p style={{ color: "lightgray", margin: "8px 0", cursor: 'pointer' }}>Gift Cards</p>
+          <p style={{ color: "lightgray", margin: "8px 0", cursor: 'pointer' }}>Offers</p>
         </div>
-        <div style={{color:"white"}}>
-          <h3>Support</h3>
-          <p>Help center</p>
-          <p>Terms of service</p>
-          <p>Privacy policy</p>
-          <p>Contact Us</p>
+
+        {/* Support Column */}
+        <div style={{ marginBottom: "30px" }}>
+          <h3 style={{ color: "white", marginBottom: "15px" }}>Support</h3>
+          <p style={{ color: "lightgray", margin: "8px 0", cursor: 'pointer' }}>Help Center</p>
+          <p style={{ color: "lightgray", margin: "8px 0", cursor: 'pointer' }}>Terms of Service</p>
+          <p style={{ color: "lightgray", margin: "8px 0", cursor: 'pointer' }}>Privacy Policy</p>
+          <p style={{ color: "lightgray", margin: "8px 0", cursor: 'pointer' }}>Contact Us</p>
         </div>
       </div>
-      <div style={{color:"white", display:"flex", justifyContent:"center",marginTop:"50px"}}>
-        <p>2026 StageSeat.All rights reserved </p>
+
+      <div style={{
+        textAlign: "center",
+        marginTop: "40px",
+        paddingTop: "20px",
+        borderTop: "1px solid rgba(255, 255, 255, 0.05)",
+        color: "gray"
+      }}>
+        <p>© 2026 StageSeat. All rights reserved</p>
       </div>
     </div>
   );

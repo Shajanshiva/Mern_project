@@ -23,9 +23,13 @@ const Header = () => {
         }}
       >
         <h2 style={{ color: "red" }}>StageSeat</h2>
-        <p style={{ fontWeight: "bold", color: "white" }}>Home</p>
-        <p style={{ fontWeight: "bold", color: "white" }}>Shows</p>
-        <p style={{ fontWeight: "bold", color: "white" }}>My Bookings</p>
+        <Link to="/index" style={{ textDecoration: 'none' }}>
+          <p style={{ fontWeight: "bold", color: "white" }}>Home</p>
+        </Link>
+        <Link to="/shows" style={{ textDecoration: 'none' }}>
+          <p style={{ fontWeight: "bold", color: "white" }}>Shows</p>
+        </Link>
+        <p style={{ fontWeight: "bold", color: "white", cursor: 'pointer' }}>My Bookings</p>
       </div>
       <div
         style={{
