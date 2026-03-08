@@ -1,5 +1,6 @@
-import React from 'react'
-import { Search} from 'lucide-react'
+import React from "react";
+import { Search } from "lucide-react";
+import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <div
@@ -33,24 +34,37 @@ const Header = () => {
           justifyContent: "center",
           gap: "30px",
         }}
-          >
-              <Search color='white'/>
+      >
+        <Search color="white" />
         <input
           type="text"
           placeholder="Search Shows"
           style={{
-              border: "1px solid white",
-              color:'white',
+            border: "1px solid white",
+            color: "white",
             padding: "10px",
-              borderRadius: "10px",
-              background: "transparent",
-            width:"200px"
+            borderRadius: "10px",
+            background: "transparent",
+            width: "200px",
           }}
         />
-        <button style={{padding:"12px", borderRadius:"10px", border:"none", backgroundColor:"red", color:'white', fontWeight:"bold"}}>Sign in</button>
+        <Link to="/signup">
+          <button
+            style={{
+              padding: "12px",
+              borderRadius: "10px",
+              border: "none",
+              backgroundColor: "red",
+              color: "white",
+              fontWeight: "bold",
+            }}
+          >
+            Sign in
+          </button>
+        </Link>
       </div>
     </div>
   );
-}
+};
 
-export default Header
+export default Header;

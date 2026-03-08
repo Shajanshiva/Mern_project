@@ -1,7 +1,7 @@
 import React from 'react'
 import LoginPage from './pages/LoginPage'
-import Header from './components/Header'
 import Index from './pages/Index'
+import SignupPage from './pages/SignupPage'
 import {BrowserRouter,Routes,Route } from 'react-router-dom'
 
 const App = () => {
@@ -9,7 +9,8 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={ <LoginPage/>}></Route>
-        <Route path='/index ' element={ <Index/>}></Route>
+        <Route path='/index' element={<Index />}></Route>
+        <Route path='/signup' element={<SignupPage/>}></Route>
       </Routes>
     </BrowserRouter>
 
