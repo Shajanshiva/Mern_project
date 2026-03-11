@@ -15,7 +15,7 @@ const Shows = () => {
                     display: 'flex',
                     flexWrap: 'wrap',
                     justifyContent: 'center',
-                    gap: '20px'
+                    gap: '30px'
                 }}>
                     {showsData.map((show) => (
                         <div key={show.id} style={{
