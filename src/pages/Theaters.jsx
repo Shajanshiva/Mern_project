@@ -1,12 +1,13 @@
 import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import theaters from "../data/movies";
 import showsData from "../data/shows";
 
 const Theaters = () => {
   const { movieId } = useParams();
+  const navigate = useNavigate();
 
   const filteredTheaters = theaters.filter(
     (theater) => theater.movieId === Number(movieId),
@@ -86,6 +87,7 @@ const Theaters = () => {
                   }}
                 >
                   <button
+                    onClick={() => navigate(`/seats/${movieId}/${theater.id}/10:00AM`)}
                     style={{
                       padding: "10px 15px",
                       backgroundColor: "red",
@@ -99,6 +101,7 @@ const Theaters = () => {
                     10:00 AM
                   </button>
                   <button
+                    onClick={() => navigate(`/seats/${movieId}/${theater.id}/1:30PM`)}
                     style={{
                       padding: "10px 15px",
                       backgroundColor: "red",
@@ -112,6 +115,7 @@ const Theaters = () => {
                     1:30 PM
                   </button>
                   <button
+                    onClick={() => navigate(`/seats/${movieId}/${theater.id}/7:00PM`)}
                     style={{
                       padding: "10px 15px",
                       backgroundColor: "red",
