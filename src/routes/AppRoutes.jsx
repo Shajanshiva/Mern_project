@@ -4,6 +4,7 @@ import Index from '../pages/Index';
 import SignupPage from '../pages/SignupPage';
 import Shows from '../pages/Shows';
 import Seats from '../pages/Seats';
+import ConfirmBooking from '../pages/ConfirmBooking';
 import { Routes, Route } from 'react-router-dom';
 import Theaters from '../pages/Theaters';
 
@@ -17,6 +18,7 @@ const AppRoutes = () => {
         <Route path="/shows" element={<Shows />}></Route>
         <Route path="/theaters/:movieId" element={<Theaters />}></Route>
         <Route path="/seats/:movieId/:theaterId/:time" element={<Seats />}></Route>
+        <Route path="/confirm-booking" element={<ConfirmBooking />}></Route>
       </Routes>
     </div>
   );
