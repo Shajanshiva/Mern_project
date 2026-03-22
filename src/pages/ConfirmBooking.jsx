@@ -6,124 +6,455 @@ import showsData from "../data/shows";
 import theaters from "../data/movies";
 
 const ConfirmBooking = () => {
-    const location = useLocation();
-    const navigate = useNavigate();
+  const location = useLocation();
+  const navigate = useNavigate();
 
-    const { movieId, theaterId, time, selectedSeats, totalPrice } = location.state || {};
+  const { movieId, theaterId, time, selectedSeats, totalPrice } =
+    location.state || {};
 
-    if (!movieId || !selectedSeats) {
-        return (
-            <div style={{ backgroundColor: "#1a1a1a", minHeight: "100vh", color: "white", textAlign: "center", padding: "50px" }}>
-                <h2>Invalid Booking Session</h2>
-                <button onClick={() => navigate("/")} style={{ padding: "10px 20px", marginTop: "20px", cursor: "pointer" }}>Go Home</button>
-            </div>
-        );
-    }
-
-    const movie = showsData.find((m) => m.id === Number(movieId));
-    const theater = theaters.find((t) => t.id === Number(theaterId));
-
-    const movieTitle = movie ? movie.title : "Unknown Movie";
-    const theaterName = theater ? theater.name : "Unknown Theater";
-    const poster = movie ? movie.image : null;
-
+  if (!movieId || !selectedSeats) {
     return (
-        <div
-            style={{
-                backgroundColor: "#1a1a1a",
-                minHeight: "100vh",
-                color: "white",
-                display: "flex",
-                flexDirection: "column",
-            }}
+      <div
+        style={{
+          backgroundColor: "#1a1a1a",
+          minHeight: "100vh",
+          color: "white",
+          textAlign: "center",
+          padding: "50px",
+        }}
+      >
+        <h2>Invalid Booking Session</h2>
+        <button
+          onClick={() => navigate("/")}
+          style={{ padding: "10px 20px", marginTop: "20px", cursor: "pointer" }}
         >
-            <Header />
+          Go Home
+        </button>
+      </div>
+    );
+  }
 
-            <div style={{ padding: "40px", flex: 1, display: "flex", flexDirection: "column", alignItems: "center" }}>
-                <h1 style={{ color: "red", marginBottom: "30px", textAlign: "center", fontSize: "2.5rem" }}>
-                    Confirm Your Booking
-                </h1>
+  const movie = showsData.find((m) => m.id === Number(movieId));
+  const theater = theaters.find((t) => t.id === Number(theaterId));
 
-                <div style={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                    justifyContent: "center",
-                    gap: "40px",
-                    backgroundColor: "#2d2d2d",
-                    padding: "40px",
-                    borderRadius: "15px",
-                    boxShadow: "0 10px 25px rgba(0,0,0,0.5)",
-                    maxWidth: "800px",
-                    width: "100%"
-                }}>
+  const movieTitle = movie ? movie.title : "Unknown Movie";
+  const theaterName = theater ? theater.name : "Unknown Theater";
+  const poster = movie ? movie.image : null;
 
-                    {poster && (
-                        <div style={{ flex: "1 1 300px", display: "flex", justifyContent: "center" }}>
-                            <img
-                                src={poster}
-                                alt={movieTitle}
-                                style={{
-                                    width: "100%",
-                                    maxWidth: "300px",
-                                    borderRadius: "10px",
-                                    boxShadow: "0 5px 15px rgba(0,0,0,0.4)",
-                                    objectFit: "cover"
-                                }}
-                            />
-                        </div>
-                    )}
+  return (
+    <div
+      style={{
+        backgroundColor: "#111",
+        minHeight: "100vh",
+        color: "white",
+        display: "flex",
+        flexDirection: "column",
+        fontFamily: "sans-serif",
+      }}
+    >
+      <Header />
 
-                    <div style={{ flex: "1 1 300px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-                        <h2 style={{ fontSize: "2rem", marginBottom: "10px", color: "white" }}>{movieTitle}</h2>
-                        <p style={{ fontSize: "1.2rem", color: "#ccc", marginBottom: "20px" }}>
-                            <span style={{ color: "red", fontWeight: "bold" }}>Theater:</span> {theaterName}
-                        </p>
-                        <p style={{ fontSize: "1.2rem", color: "#ccc", marginBottom: "20px" }}>
-                            <span style={{ color: "red", fontWeight: "bold" }}>Time:</span> {time}
-                        </p>
+      <div
+        style={{
+          padding: "40px",
+          flex: 1,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        {/* Stepper */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: "15px",
+            marginBottom: "50px",
+            fontSize: "0.75rem",
+            letterSpacing: "1px",
+            color: "#666",
+            fontWeight: "bold",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              color: "#aaa",
+            }}
+          >
+            <div
+              style={{
+                width: "8px",
+                height: "8px",
+                borderRadius: "50%",
+                backgroundColor: "#5c7cfa",
+              }}
+            ></div>
+            SELECT SEATS
+          </div>
+          <div
+            style={{ height: "1px", width: "40px", backgroundColor: "#333" }}
+          ></div>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              color: "#fff",
+            }}
+          >
+            <div
+              style={{
+                width: "8px",
+                height: "8px",
+                borderRadius: "50%",
+                backgroundColor: "#e50914",
+              }}
+            ></div>
+            CONFIRMATION
+          </div>
+          <div
+            style={{ height: "1px", width: "40px", backgroundColor: "#333" }}
+          ></div>
+          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <div
+              style={{
+                width: "8px",
+                height: "8px",
+                borderRadius: "50%",
+                backgroundColor: "#444",
+              }}
+            ></div>
+            PAYMENT
+          </div>
+        </div>
 
-                        <div style={{ backgroundColor: "#1a1a1a", padding: "20px", borderRadius: "10px", marginBottom: "25px" }}>
-                            <p style={{ fontSize: "1.1rem", margin: "0 0 10px 0" }}>
-                                Tickets: <span style={{ fontWeight: "bold", color: "white" }}>{selectedSeats.length}</span>
-                            </p>
-                            <p style={{ fontSize: "1.1rem", margin: "0" }}>
-                                Seats: <span style={{ fontWeight: "bold", color: "red" }}>{selectedSeats.join(", ")}</span>
-                            </p>
-                        </div>
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            backgroundColor: "#1c1c1c",
+            borderRadius: "15px",
+            boxShadow: "0 15px 35px rgba(0,0,0,0.6)",
 
-                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "30px", borderTop: "1px solid #444", paddingTop: "20px" }}>
-                            <span style={{ fontSize: "1.3rem" }}>Total Amount</span>
-                            <span style={{ fontSize: "1.8rem", fontWeight: "bold", color: "white" }}>₹{totalPrice}</span>
-                        </div>
+            maxWidth: "950px",
+            width: "100%",
+            overflow: "hidden",
+            position: "relative",
+          }}
+        >
+          {/* Add a subtle red gradient purely for aesthetics on the right side */}
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              right: 0,
+              width: "300px",
+              height: "100%",
+              background:
+                "radial-gradient(circle at top right, rgba(229, 9, 20, 0.05), transparent 70%)",
+              pointerEvents: "none",
+            }}
+          ></div>
 
-                        <button
-                            onClick={() => {
-                                alert("Payment Successful! Your tickets are booked.");
-                                navigate("/index");
-                            }}
-                            style={{
-                                padding: "15px",
-                                backgroundColor: "red",
-                                color: "white",
-                                border: "none",
-                                borderRadius: "8px",
-                                fontSize: "1.2rem",
-                                fontWeight: "bold",
-                                cursor: "pointer",
-                                transition: "background-color 0.2s"
-                            }}
-                            onMouseOver={(e) => e.target.style.backgroundColor = "#cc0000"}
-                            onMouseOut={(e) => e.target.style.backgroundColor = "red"}
-                        >
-                            Proceed to Pay
-                        </button>
-                    </div>
+          {/* Movie Poster */}
+          {poster && (
+            <div style={{ flex: "1 1 350px" }}>
+              <img
+                src={poster}
+                alt={movieTitle}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  display: "block",
+                }}
+              />
+            </div>
+          )}
+
+          {/* Booking Details */}
+          <div
+            style={{
+              flex: "1 1 450px",
+              display: "flex",
+              flexDirection: "column",
+              padding: "50px",
+              justifyContent: "center",
+              zIndex: 1,
+            }}
+          >
+            <div
+              style={{
+                fontSize: "0.75rem",
+                letterSpacing: "2px",
+                color: "#888",
+                marginBottom: "10px",
+                fontWeight: "bold",
+              }}
+            >
+              BOOKING CONFIRMATION
+            </div>
+            <h2
+              style={{
+                fontSize: "3rem",
+                margin: "0",
+                color: "white",
+                fontWeight: "800",
+                letterSpacing: "-1px",
+              }}
+            >
+              {movieTitle}
+            </h2>
+
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: "40px",
+                marginTop: "40px",
+                marginBottom: "40px",
+              }}
+            >
+              <div>
+                <div
+                  style={{
+                    fontSize: "0.7rem",
+                    letterSpacing: "1px",
+                    color: "#888",
+                    marginBottom: "8px",
+                    fontWeight: "bold",
+                  }}
+                >
+                  CINEMA
                 </div>
+                <div
+                  style={{
+                    fontSize: "1.2rem",
+                    fontWeight: "500",
+                    color: "#ddd",
+                  }}
+                >
+                  {theaterName}
+                </div>
+              </div>
+              <div>
+                <div
+                  style={{
+                    fontSize: "0.7rem",
+                    letterSpacing: "1px",
+                    color: "#888",
+                    marginBottom: "8px",
+                    fontWeight: "bold",
+                  }}
+                >
+                  SHOWTIME
+                </div>
+                <div
+                  style={{
+                    fontSize: "1.2rem",
+                    fontWeight: "500",
+                    color: "#ddd",
+                  }}
+                >
+                  {time}
+                </div>
+              </div>
+              <div>
+                <div
+                  style={{
+                    fontSize: "0.7rem",
+                    letterSpacing: "1px",
+                    color: "#888",
+                    marginBottom: "8px",
+                    fontWeight: "bold",
+                  }}
+                >
+                  TICKETS
+                </div>
+                <div
+                  style={{
+                    fontSize: "1.2rem",
+                    fontWeight: "500",
+                    color: "#ddd",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "8px",
+                  }}
+                >
+                  <span style={{ color: "#e50914", fontSize: "1rem" }}>🎟️</span>{" "}
+                  {selectedSeats.length} Persons
+                </div>
+              </div>
+              <div>
+                <div
+                  style={{
+                    fontSize: "0.7rem",
+                    letterSpacing: "1px",
+                    color: "#888",
+                    marginBottom: "8px",
+                    fontWeight: "bold",
+                  }}
+                >
+                  SEATS
+                </div>
+                <div
+                  style={{
+                    fontSize: "1.2rem",
+                    fontWeight: "500",
+                    color: "#ddd",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "8px",
+                  }}
+                >
+                  <span style={{ color: "#e50914", fontSize: "1rem" }}>💺</span>{" "}
+                  {selectedSeats.join(", ")}
+                </div>
+              </div>
             </div>
 
-            <Footer />
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                backgroundColor: "#262626",
+                padding: "25px",
+                borderRadius: "10px",
+                marginBottom: "35px",
+                boxShadow: "inset 0 2px 10px rgba(0,0,0,0.2)",
+              }}
+            >
+              <div>
+                <div
+                  style={{
+                    fontSize: "0.7rem",
+                    letterSpacing: "1px",
+                    color: "#888",
+                    marginBottom: "8px",
+                    fontWeight: "bold",
+                  }}
+                >
+                  TOTAL PAYABLE
+                </div>
+                <div
+                  style={{
+                    fontSize: "2.5rem",
+                    fontWeight: "bold",
+                    color: "#fff",
+                    letterSpacing: "-1px",
+                  }}
+                >
+                  <span style={{ fontSize: "1.5rem", color: "#aaa" }}>₹</span>{" "}
+                  {totalPrice}
+                </div>
+              </div>
+              <div
+                style={{
+                  textAlign: "right",
+                  fontSize: "0.8rem",
+                  color: "#888",
+                }}
+              >
+                <div style={{ marginBottom: "3px" }}>All taxes included</div>
+                <div style={{ color: "#5c7cfa" }}>Final stage</div>
+              </div>
+            </div>
+
+            <div style={{ display: "flex", gap: "20px" }}>
+              <button
+                onClick={() => {
+                  alert("Payment Successful! Your tickets are booked.");
+                  navigate("/index");
+                }}
+                style={{
+                  flex: 1,
+                  padding: "18px",
+                  backgroundColor: "#d10000",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "8px",
+                  fontSize: "1rem",
+                  fontWeight: "bold",
+                  letterSpacing: "1px",
+                  cursor: "pointer",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  gap: "10px",
+                  transition: "all 0.2s ease",
+                }}
+                onMouseOver={(e) => {
+                  e.target.style.backgroundColor = "#ff0000";
+                  e.target.style.transform = "translateY(-2px)";
+                  e.target.style.boxShadow = "0 5px 15px rgba(229, 9, 20, 0.4)";
+                }}
+                onMouseOut={(e) => {
+                  e.target.style.backgroundColor = "#d10000";
+                  e.target.style.transform = "translateY(0)";
+                  e.target.style.boxShadow = "none";
+                }}
+              >
+                PROCEED TO PAY <span style={{ fontSize: "1.2rem" }}>→</span>
+              </button>
+              <button
+                onClick={() => navigate(-1)}
+                style={{
+                  padding: "18px 40px",
+                  backgroundColor: "transparent",
+                  color: "#ccc",
+                  border: "1px solid #444",
+                  borderRadius: "8px",
+                  fontSize: "0.9rem",
+                  fontWeight: "bold",
+                  letterSpacing: "1px",
+                  cursor: "pointer",
+                  transition: "all 0.2s ease",
+                }}
+                onMouseOver={(e) => {
+                  e.target.style.color = "#fff";
+                  e.target.style.borderColor = "#888";
+                }}
+                onMouseOut={(e) => {
+                  e.target.style.color = "#ccc";
+                  e.target.style.borderColor = "#444";
+                }}
+              >
+                CANCEL
+              </button>
+            </div>
+          </div>
         </div>
-    );
+
+        {/* Footer Security Badges */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: "40px",
+            marginTop: "40px",
+            fontSize: "0.75rem",
+            letterSpacing: "1px",
+            color: "#666",
+            fontWeight: "bold",
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <span style={{ fontSize: "1rem" }}>🛡️</span> SECURE CHECKOUT
+          </div>
+          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <span style={{ fontSize: "1rem" }}>🔄</span> EASY REFUNDS
+          </div>
+        </div>
+      </div>
+
+      <Footer />
+    </div>
+  );
 };
 
 export default ConfirmBooking;
