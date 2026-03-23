@@ -20,120 +20,164 @@ const Theaters = () => {
   return (
     <div
       style={{
-        backgroundColor: "#1a1a1a",
+        backgroundColor: "#151515",
         minHeight: "100vh",
         color: "white",
         display: "flex",
         flexDirection: "column",
+        fontFamily: "Inter, sans-serif"
       }}
     >
       <Header />
 
-      <div style={{ padding: "40px", textAlign: "center", flex: 1 }}>
-        <h1 style={{ color: "red", marginBottom: "20px" }}>
-          Theaters Showing {currentMovie ? currentMovie.title : "This Movie"}
+      <div style={{ padding: "50px 20px", width: "100%", maxWidth: "1100px", margin: "0 auto", flex: 1 }}>
+        <h1 style={{ textAlign: "center", fontSize: "2.8rem", marginBottom: "40px", fontWeight: "bold" }}>
+          Theaters Showing <span style={{ color: "#e50914" }}>{currentMovie ? currentMovie.title : "This Movie"}</span>
         </h1>
 
         {currentMovie && (
-          <img
-            src={currentMovie.image}
-            alt={currentMovie.title}
-            style={{
-              width: "100%",
-              maxWidth: "350px",
-              height: "350px",
-              objectFit: "contain",
-              borderRadius: "15px",
-              marginBottom: "40px",
-              boxShadow: "0 4px 15px rgba(0,0,0,0.4)"
-            }}
-          />
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginBottom: "60px" }}>
+            <div style={{ position: "relative", marginBottom: "30px" }}>
+              <div style={{
+                position: "absolute", top: 0, left: 0, right: 0, bottom: 0,
+                boxShadow: "0 0 80px rgba(229, 9, 20, 0.5)",
+                borderRadius: "15px", zIndex: 0
+              }}></div>
+              <img
+                src={currentMovie.image}
+                alt={currentMovie.title}
+                style={{
+                  width: "100%",
+                  maxWidth: "320px",
+                  height: "320px",
+                  objectFit: "cover",
+                  borderRadius: "15px",
+                  position: "relative",
+                  zIndex: 1,
+                  boxShadow: "0 10px 30px rgba(0,0,0,0.8)",
+                  border: "1px solid #333"
+                }}
+              />
+            </div>
+
+            {/* Pills Section */}
+            <div style={{ display: "flex", gap: "15px", flexWrap: "wrap", justifyContent: "center" }}>
+              <div style={{ padding: "8px 20px", backgroundColor: "#262626", borderRadius: "20px", fontSize: "0.85rem", color: "#ccc", border: "1px solid #333" }}>
+                {currentMovie.genre || "Action / Drama"}
+              </div>
+              <div style={{ padding: "8px 20px", backgroundColor: "#262626", borderRadius: "20px", fontSize: "0.85rem", color: "#ccc", border: "1px solid #333" }}>
+                2h 45m
+              </div>
+            </div>
+          </div>
         )}
 
         {filteredTheaters.length > 0 ? (
           <div
             style={{
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: "center",
-              gap: "30px",
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(450px, 1fr))",
+              gap: "25px",
+              width: "100%"
             }}
           >
             {filteredTheaters.map((theater, index) => (
               <div
                 key={index}
                 style={{
-                  backgroundColor: "#2d2d2d",
+                  backgroundColor: "#1c1c1c",
                   borderRadius: "15px",
-                  padding: "20px",
-                  width: "300px",
-                  textAlign: "center",
-                  boxShadow: "0 4px 10px rgba(0,0,0,0.5)",
+                  padding: "30px",
+                  boxShadow: "0 8px 25px rgba(0,0,0,0.4)",
+                  border: "1px solid #2a2a2a",
+                  display: "flex",
+                  flexDirection: "column"
                 }}
               >
-                <h3 style={{ margin: "10px 0", color: "red", fontSize: "1.5rem" }}>
-                  {theater.name}
-                </h3>
-                <p style={{ margin: "10px 0", fontSize: "1.2rem", color: "#ccc" }}>
-                  {theater.location}
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "5px" }}>
+                  <h3 style={{ margin: "0", color: "#fff", fontSize: "1.5rem", fontWeight: "600" }}>
+                    {theater.name}
+                  </h3>
+                </div>
+
+                <p style={{ margin: "0 0 25px 0", fontSize: "0.9rem", color: "#888", display: "flex", alignItems: "center", gap: "5px" }}>
+                  <span style={{ fontSize: "1rem" }}>📍</span> {theater.location}
                 </p>
+
+                <div style={{ fontSize: "0.7rem", letterSpacing: "1px", color: "#777", marginBottom: "15px", fontWeight: "bold" }}>
+                  TODAY - NOV 15
+                </div>
+
                 <div
                   style={{
-                    marginTop: "20px",
-                    display: "flex",
-                    gap: "10px",
-                    justifyContent: "center",
-                    flexWrap: "wrap",
+                    display: "grid",
+                    gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))",
+                    gap: "15px",
                   }}
                 >
                   <button
-                    onClick={() => navigate(`/seats/${movieId}/${theater.id}/10:00AM`)}
+                    onClick={() => navigate(`/seats/${movieId}/${theater.id}/10:30AM`)}
                     style={{
-                      padding: "10px 15px",
-                      backgroundColor: "red",
+                      padding: "12px 10px",
+                      backgroundColor: "#e50914",
                       color: "white",
                       border: "none",
-                      borderRadius: "5px",
+                      borderRadius: "6px",
                       cursor: "pointer",
                       fontWeight: "bold",
+                      fontSize: "0.85rem",
+                      boxShadow: "0 4px 15px rgba(229, 9, 20, 0.3)",
+                      transition: "all 0.2s ease"
                     }}
+                    onMouseOver={(e) => { e.target.style.backgroundColor = "#ff0000"; e.target.style.transform = "translateY(-2px)"; }}
+                    onMouseOut={(e) => { e.target.style.backgroundColor = "#e50914"; e.target.style.transform = "translateY(0)"; }}
                   >
-                    10:00 AM
+                    10:30 AM
                   </button>
                   <button
-                    onClick={() => navigate(`/seats/${movieId}/${theater.id}/1:30PM`)}
+                    onClick={() => navigate(`/seats/${movieId}/${theater.id}/02:15PM`)}
                     style={{
-                      padding: "10px 15px",
-                      backgroundColor: "red",
+                      padding: "12px 10px",
+                      backgroundColor: "#e50914",
                       color: "white",
                       border: "none",
-                      borderRadius: "5px",
+                      borderRadius: "6px",
                       cursor: "pointer",
                       fontWeight: "bold",
+                      fontSize: "0.85rem",
+                      boxShadow: "0 4px 15px rgba(229, 9, 20, 0.3)",
+                      transition: "all 0.2s ease"
                     }}
+                    onMouseOver={(e) => { e.target.style.backgroundColor = "#ff0000"; e.target.style.transform = "translateY(-2px)"; }}
+                    onMouseOut={(e) => { e.target.style.backgroundColor = "#e50914"; e.target.style.transform = "translateY(0)"; }}
                   >
-                    1:30 PM
+                    02:15 PM
                   </button>
                   <button
-                    onClick={() => navigate(`/seats/${movieId}/${theater.id}/7:00PM`)}
+                    onClick={() => navigate(`/seats/${movieId}/${theater.id}/06:45PM`)}
                     style={{
-                      padding: "10px 15px",
-                      backgroundColor: "red",
+                      padding: "12px 10px",
+                      backgroundColor: "#e50914",
                       color: "white",
                       border: "none",
-                      borderRadius: "5px",
+                      borderRadius: "6px",
                       cursor: "pointer",
                       fontWeight: "bold",
+                      fontSize: "0.85rem",
+                      boxShadow: "0 4px 15px rgba(229, 9, 20, 0.3)",
+                      transition: "all 0.2s ease"
                     }}
+                    onMouseOver={(e) => { e.target.style.backgroundColor = "#ff0000"; e.target.style.transform = "translateY(-2px)"; }}
+                    onMouseOut={(e) => { e.target.style.backgroundColor = "#e50914"; e.target.style.transform = "translateY(0)"; }}
                   >
-                    7:00 PM
+                    06:45 PM
                   </button>
                 </div>
               </div>
             ))}
           </div>
         ) : (
-          <p style={{ fontSize: "1.2rem", color: "#ccc", marginTop: "50px" }}>
+          <p style={{ fontSize: "1.2rem", color: "#ccc", marginTop: "50px", textAlign: "center" }}>
             No theaters currently showing this movie.
           </p>
         )}

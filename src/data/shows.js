@@ -64,6 +64,7 @@ const showsData = [
     rating: "8.7",
     image: soorarai_pottru,
   },
+  
 ];
 
 export default showsData;
