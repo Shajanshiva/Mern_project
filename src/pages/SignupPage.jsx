@@ -1,98 +1,113 @@
 import { useState } from "react";
-import Button from "../components/Button";
+import { Link, useNavigate } from "react-router-dom";
 import "./SignupPage.css";
-import { Link } from "react-router-dom";
 
 export default function SignupPage() {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (password !== confirmPassword) {
-      alert("Passwords do not match!");
-      return;
-    }
     console.log("Full Name:", fullName);
     console.log("Email:", email);
     console.log("Password:", password);
     alert("Account created successfully for: " + fullName);
+    navigate("/");
   };
 
   return (
-    <div>
-      <div className="signup-container">
+    <div className="signup-page">
+      {/* Top Navbar */}
+      <div className="navbar">
+        <div className="logo">STAGESEAT</div>
+        <Link to="/index" className="back-link">
+          ← Back to Home
+        </Link>
+      </div>
+
+      {/* Main Content */}
+      <div className="signup-content">
         <div className="signup-card">
           <div className="signup-header">
-            <h1>StageSeat</h1>
-            <p className="tagline">Join Us</p>
+            <span className="badge">NEW MEMBER</span>
+            <h2>JOIN STAGESEAT</h2>
             <p className="subtitle">
-              Create your account and reserve your seat.
+              Create your account to book your favorite shows.
             </p>
           </div>
 
           <form onSubmit={handleSubmit} className="signup-form">
             <div className="form-group">
               <label htmlFor="fullName">FULL NAME</label>
-              <input
-                type="text"
-                id="fullName"
-                placeholder="John Doe"
-                value={fullName}
-                onChange={(e) => setFullName(e.target.value)}
-                required
-              />
+              <div className="input-box">
+                <span className="icon">👤</span>
+                <input
+                  type="text"
+                  id="fullName"
+                  placeholder="John Doe"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                  required
+                />
+              </div>
             </div>
 
             <div className="form-group">
               <label htmlFor="email">EMAIL ADDRESS</label>
-              <input
-                type="email"
-                id="email"
-                placeholder="your@email.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
+              <div className="input-box">
+                <span className="icon">@</span>
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="john@example.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
             </div>
 
             <div className="form-group">
               <label htmlFor="password">PASSWORD</label>
-              <input
-                type="password"
-                id="password"
-                placeholder="••••••••"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
+              <div className="input-box">
+                <span className="icon">🔒</span>
+                <input
+                  type="password"
+                  id="password"
+                  placeholder="••••••••"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
             </div>
 
-            <div className="form-group">
-              <label htmlFor="confirmPassword">CONFIRM PASSWORD</label>
-              <input
-                type="password"
-                id="confirmPassword"
-                placeholder="••••••••"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                required
-              />
-            </div>
-
-            <Link to="/">
-              <Button type="submit" />
-            </Link>
+              <button type="submit" className="submit-btn">
+                CREATE ACCOUNT
+              </button>
           </form>
 
-          <p className="login-text">
-            Already have an account?{" "}
+          <div className="login-prompt">
+            <span>Already have an account? </span>
             <Link to="/" className="login-link">
               Log In
             </Link>
-          </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Page Footer */}
+      <div className="footer">
+        <div className="footer-left">
+          <p className="footer-title">STAGESEAT</p>
+          <p className="copyright">© 2024 STAGESEAT. ALL RIGHTS RESERVED.</p>
+        </div>
+        <div className="footer-right">
+          <span>PRIVACY POLICY</span>
+          <span>TERMS OF SERVICE</span>
+          <span>HELP</span>
         </div>
       </div>
     </div>
