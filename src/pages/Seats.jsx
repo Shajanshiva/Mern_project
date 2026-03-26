@@ -4,6 +4,8 @@ import Footer from "../components/Footer";
 import { useNavigate, useParams } from "react-router-dom";
 import showsData from "../data/shows";
 import theaters from "../data/movies";
+import SeatGrid from "../components/SeatGrid";
+import BookingSummary from "../components/BookingSummary";
 
 const Seats = () => {
     const navigate = useNavigate();
@@ -122,63 +124,13 @@ const Seats = () => {
                     SCREEN
                 </div>
 
-                <div
-                    style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: "10px",
-                        marginBottom: "30px",
-                    }}
-                >
-                    {rows.map((row) => (
-                        <div
-                            key={row}
-                            style={{ display: "flex", gap: "10px", alignItems: "center" }}
-                        >
-                            <div style={{ width: "20px", fontWeight: "bold", color: "#ccc" }}>
-                                {row}
-                            </div>
-                            {cols.map((col) => {
-                                const seatId = `${row}${col}`;
-                                const isOccupied = occupiedSeats.includes(seatId);
-                                const isSelected = selectedSeats.includes(seatId);
-
-                                let seatColor = "#2d2d2d";
-                                if (isOccupied)
-                                    seatColor = "#555";
-                                else if (isSelected) seatColor = "red";
-
-                                return (
-                                    <div
-                                        key={seatId}
-                                        onClick={() => toggleSeat(seatId)}
-                                        style={{
-                                            width: "35px",
-                                            height: "35px",
-                                            backgroundColor: seatColor,
-                                            borderTopLeftRadius: "10px",
-                                            borderTopRightRadius: "10px",
-                                            display: "flex",
-                                            justifyContent: "center",
-                                            alignItems: "center",
-                                            cursor: isOccupied ? "not-allowed" : "pointer",
-                                            fontSize: "0.8rem",
-                                            fontWeight: "bold",
-                                            color: isSelected
-                                                ? "white"
-                                                : isOccupied
-                                                    ? "#888"
-                                                    : "#ccc",
-                                            transition: "all 0.2s ease",
-                                        }}
-                                    >
-                                        {col}
-                                    </div>
-                                );
-                            })}
-                        </div>
-                    ))}
-                </div>
+                <SeatGrid
+                  rows={rows}
+                  cols={cols}
+                  occupiedSeats={occupiedSeats}
+                  selectedSeats={selectedSeats}
+                  toggleSeat={toggleSeat}
+                />
 
                 <div
                     style={{
@@ -225,57 +177,11 @@ const Seats = () => {
                     </div>
                 </div>
 
-                {selectedSeats.length > 0 && (
-                    <div
-                        style={{
-                            backgroundColor: "#2d2d2d",
-                            padding: "20px",
-                            borderRadius: "15px",
-                            textAlign: "center",
-                            width: "100%",
-                            maxWidth: "400px",
-                            boxShadow: "0 4px 10px rgba(0,0,0,0.5)",
-                        }}
-                    >
-                        <h3 style={{ margin: "0 0 10px 0", color: "#fff" }}>
-                            Booking Summary
-                        </h3>
-                        <p style={{ margin: "5px 0", color: "#ccc" }}>
-                            Selected Seats:{" "}
-                            <span style={{ color: "red", fontWeight: "bold" }}>
-                                {selectedSeats.join(", ")}
-                            </span>
-                        </p>
-                        <p style={{ margin: "5px 0 20px 0", color: "#ccc" }}>
-                            Total Price:{" "}
-                            <span
-                                style={{ color: "red", fontWeight: "bold", fontSize: "1.2rem" }}
-                            >
-                                ₹{calculateTotal()}
-                            </span>
-                        </p>
-
-                        <button
-                            onClick={handleBooking}
-                            style={{
-                                padding: "12px 30px",
-                                backgroundColor: "red",
-                                color: "white",
-                                border: "none",
-                                borderRadius: "5px",
-                                cursor: "pointer",
-                                fontWeight: "bold",
-                                fontSize: "1.1rem",
-                                width: "100%",
-                                transition: "background-color 0.2s",
-                            }}
-                            onMouseOver={(e) => (e.target.style.backgroundColor = "#cc0000")}
-                            onMouseOut={(e) => (e.target.style.backgroundColor = "red")}
-                        >
-                            Confirm Booking
-                        </button>
-                    </div>
-                )}
+                <BookingSummary
+                  selectedSeats={selectedSeats}
+                  calculateTotal={calculateTotal}
+                  handleBooking={handleBooking}
+                />
             </div>
 
             <Footer />
