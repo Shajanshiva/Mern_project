@@ -31,54 +31,47 @@ const Index = () => {
           ></div>
           <div
             style={{
-              width: "700px",
-              padding: "140px",
+              width: "100%",
+              maxWidth: "1000px",
+              padding: "180px 150px",
               display: "flex",
               flexDirection: "column",
               gap: "30px",
-              paddingLeft: "240px",
+              position: "relative",
+              zIndex: 1,
             }}
           >
-            <span
-              style={{
-                border: "solid 1px orange",
-                borderRadius: "20px",
-                padding: "10px",
-                color: "orange",
-                width: "95px",
-              }}
-            >
-              Now Showing
-            </span>
-
-            <h1 style={{ fontSize: "75px", margin: "0px" }}>The Phantom of </h1>
-            <h1 style={{ fontSize: "80px", margin: "0px", color: "red" }}>
+            <h1 style={{ fontSize: "90px", margin: "0px", color: "#d90000", fontFamily: "Georgia, 'Times New Roman', Times, serif" }}>
               The Grand Opera
             </h1>
-            <p style={{ fontSize: "20px", width: "500px" }}>
+            <p style={{ fontSize: "20px", width: "550px", color: "#e0e0e0", lineHeight: "1.6" }}>
               Experience the timeless masterpiece in its most spectacular
               production yet. Winner of 7 Tony Awards including Best Musical.
             </p>
-            <div style={{ display: "flex", gap: "25px" }}>
+            <div style={{ display: "flex", gap: "20px" }}>
               <button
                 style={{
                   padding: "15px",
-                  borderRadius: "10px",
+                  borderRadius: "8px",
                   width: "180px",
-                  backgroundColor: "red",
+                  backgroundColor: "#c30000",
                   color: "white",
                   border: "none",
+                  fontSize: "15px",
+                  cursor: "pointer",
                 }}
               >
                 Book Ticket Now
               </button>
               <button
                 style={{
-                  borderRadius: "10px",
-                  width: "130px",
-                  backgroundColor: "black",
-                  border: "white solid 1px",
+                  borderRadius: "8px",
+                  width: "150px",
+                  backgroundColor: "rgba(0,0,0,0.6)",
+                  border: "1px solid #888",
                   color: "white",
+                  fontSize: "15px",
+                  cursor: "pointer",
                 }}
               >
                 Watch Trailer
@@ -91,20 +84,20 @@ const Index = () => {
             style={{
               backgroundColor: "black",
               width: "100%",
-              padding: "80px 60px 40px 60px",
+              padding: "80px 150px 40px 150px",
               boxSizing: "border-box",
             }}
           >
-            <div style={{ color: "orange" }}>Top Picks </div>
-            <h1 style={{ color: "white" }}>Trending Shows</h1>
+            <div style={{ color: "#d49a00", fontSize: "15px", fontWeight: "bold", marginBottom: "15px", fontFamily: "Georgia, 'Times New Roman', Times, serif" }}>Top Picks</div>
+            <h1 style={{ color: "white", fontSize: "40px", margin: 0, fontFamily: "Georgia, 'Times New Roman', Times, serif" }}>Trending Shows</h1>
           </div>
           <div
             style={{
               backgroundColor: "black",
-              padding: "0 60px 40px 60px",
+              padding: "0 150px 80px 150px",
               display: "grid",
               gridTemplateColumns: "repeat(4, 1fr)",
-              gap: "20px",
+              gap: "30px",
               width: "100%",
               boxSizing: "border-box",
             }}

@@ -5,23 +5,44 @@ import SignupPage from '../pages/SignupPage';
 import Shows from '../pages/Shows';
 import Seats from '../pages/Seats';
 import ConfirmBooking from '../pages/ConfirmBooking';
-import { Routes, Route } from 'react-router-dom';
 import Theaters from '../pages/Theaters';
+import MainLayout from '../layout/MainLayout';
 
-const AppRoutes = () => {
-  return (
-    <div>
-      <Routes>
-        <Route path="/" element={<LoginPage />}></Route>
-        <Route path="/index" element={<Index />}></Route>
-        <Route path="/signup" element={<SignupPage />}></Route>
-        <Route path="/shows" element={<Shows />}></Route>
-        <Route path="/theaters/:movieId" element={<Theaters />}></Route>
-        <Route path="/seats/:movieId/:theaterId/:time" element={<Seats />}></Route>
-        <Route path="/confirm-booking" element={<ConfirmBooking />}></Route>
-      </Routes>
-    </div>
-  );
-}
+const AppRoutes = [
+  {
+    path: '/',
+    element: <MainLayout />,
+    children: [
+      {
+        path: "/",
+        element: <LoginPage />
+      },
+      {
+        path: "/index",
+        element: <Index />
+      },
+      {
+        path: "/signup",
+        element: <SignupPage />
+      },
+      {
+        path: "/shows",
+        element: <Shows />
+      },
+      {
+        path: "/theaters/:movieId",
+        element: <Theaters />
+      },
+      {
+        path: "/seats/:movieId/:theaterId/:time",
+        element: <Seats />
+      },
+      {
+        path: "/confirm-booking",
+        element: <ConfirmBooking />
+      }
+    ]
+  }
+];
 
-export default AppRoutes
+export default AppRoutes;

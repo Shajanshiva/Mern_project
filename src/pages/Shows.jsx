@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import showsData from "../data/shows";
+// import {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 const Shows = () => {
   const today = new Date().toLocaleDateString("en-GB", {
@@ -9,6 +10,14 @@ const Shows = () => {
     month: "long",
     year: "numeric",
   });
+
+  // const [showsData, setShowsData] = useState([]);
+  // useEffect(() => {
+  //   fetch("http://localhost:5000/api/movies")
+  //     .then((response) => response.json())
+  //     .then((data) => setShowsData(data))
+  //     .catch((error) => console.error("Error fetching shows data:", error));
+  // }, []);
 
   return (
     <div
