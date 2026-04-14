@@ -1,0 +1,9 @@
+.index-page {
+  /* Global reset or page-specific resets */
+}
+
+.index-content {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}

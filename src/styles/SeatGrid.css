@@ -1,0 +1,50 @@
+.seat-grid-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.seat-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.row-label {
+  width: 20px;
+  font-weight: bold;
+  color: #ccc;
+}
+
+.seat {
+  width: 35px;
+  height: 35px;
+  background-color: #2d2d2d;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #ccc;
+  transition: all 0.2s ease;
+}
+
+.seat.occupied {
+  background-color: #555;
+  cursor: not-allowed;
+  color: #888;
+}
+
+.seat.selected {
+  background-color: red;
+  color: white;
+}
+
+.seat:not(.occupied):hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+}

@@ -1,0 +1,46 @@
+.stepper-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 50px;
+  fontSize: 0.75rem;
+  letter-spacing: 1px;
+  color: #666;
+  font-weight: bold;
+}
+
+.step-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.step-item.active {
+  color: #fff;
+}
+
+.step-item.completed {
+  color: #aaa;
+}
+
+.step-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #444;
+}
+
+.step-item.completed .step-dot {
+  background-color: #5c7cfa;
+}
+
+.step-item.active .step-dot {
+  background-color: #e50914;
+}
+
+.step-line {
+  height: 1px;
+  width: 40px;
+  background-color: #333;
+}

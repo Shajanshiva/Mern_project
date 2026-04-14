@@ -34,7 +34,7 @@ const AppRoutes = [
         element: <Theaters />
       },
       {
-        path: "/seats/:movieId/:theaterId/:time",
+        path: "/seats/:showId",
         element: <Seats />
       },
       {

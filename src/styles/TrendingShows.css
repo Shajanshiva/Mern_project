@@ -1,0 +1,58 @@
+.trending-header {
+  background-color: black;
+  width: 100%;
+  padding: 80px 150px 40px 150px;
+  box-sizing: border-box;
+}
+
+.trending-label {
+  color: #d49a00;
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.trending-title {
+  color: white;
+  font-size: 40px;
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.trending-grid {
+  background-color: black;
+  padding: 0 150px 80px 150px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.trending-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.trending-card:hover {
+  transform: translateY(-5px);
+}
+
+.trending-movie-img {
+  height: 350px;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.trending-movie-title {
+  color: white;
+  font-size: 19px;
+  font-weight: 600;
+  textAlign: center;
+}

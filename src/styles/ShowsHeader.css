@@ -1,0 +1,68 @@
+.shows-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 40px;
+}
+
+.now-premiering-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.premiering-line {
+  width: 30px;
+  height: 2px;
+  background-color: #e50914;
+}
+
+.premiering-label {
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  color: #ccc;
+  font-weight: bold;
+}
+
+.shows-header-title {
+  font-size: 3.5rem;
+  margin: 0 0 10px 0;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.shows-header-title span {
+  color: #e50914;
+  font-style: italic;
+}
+
+.shows-header-subtitle {
+  color: #888;
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 450px;
+  margin-top: 20px;
+}
+
+.shows-header-right {
+  text-align: right;
+}
+
+.date-label {
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  color: #888;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.date-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #e50914;
+}
+
+.date-value span {
+  color: white;
+}

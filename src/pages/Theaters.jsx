@@ -1,58 +1,81 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useParams } from "react-router-dom";
-import theaters from "../data/movies";
-import showsData from "../data/shows";
+import API from "../api.js";
 import TheaterMovieBanner from "../components/TheaterMovieBanner";
 import TheaterCard from "../components/TheaterCard";
+import "../styles/Theaters.css";
 
 const Theaters = () => {
   const { movieId } = useParams();
 
-  const filteredTheaters = theaters.filter(
-    (theater) => theater.movieId === Number(movieId),
-  );
+  const [groupedShows, setGroupedShows] = useState({});
+  const [movie, setMovie] = useState(null);
 
-  const currentMovie = showsData.find(
-    (show) => show.id === Number(movieId)
-  );
+  useEffect(() => {
+    getMovie();
+    getShows();
+  }, []);
+
+  const getMovie = async () => {
+    try {
+      const res = await API.get(`/movies/${movieId}`);
+      setMovie(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getShows = async () => {
+    try {
+      const res = await API.get(`/shows/${movieId}`);
+
+      if (res.data.length > 0) {
+        // Group shows by theaterId
+        const grouped = res.data.reduce((acc, show) => {
+          const tId = show.theaterId._id;
+          if (!acc[tId]) {
+            acc[tId] = {
+              theater: show.theaterId,
+              shows: [],
+            };
+          }
+          acc[tId].shows.push(show);
+          return acc;
+        }, {});
+
+        setGroupedShows(grouped);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
-    <div
-      style={{
-        backgroundColor: "#151515",
-        minHeight: "100vh",
-        color: "white",
-        display: "flex",
-        flexDirection: "column",
-        fontFamily: "Inter, sans-serif"
-      }}
-    >
+    <div className="theaters-page">
       <Header />
 
-      <div style={{ padding: "50px 20px", width: "100%", maxWidth: "1100px", margin: "0 auto", flex: 1 }}>
-        <h1 style={{ textAlign: "center", fontSize: "2.8rem", marginBottom: "40px", fontWeight: "bold" }}>
-          Theaters Showing <span style={{ color: "#e50914" }}>{currentMovie ? currentMovie.title : "This Movie"}</span>
+      <div className="theaters-container">
+        <h1 className="theaters-title">
+          Theaters Showing{" "}
+          <span>{movie ? movie.title : "Loading..."}</span>
         </h1>
 
-        <TheaterMovieBanner currentMovie={currentMovie} />
+        <TheaterMovieBanner currentMovie={movie} />
 
-        {filteredTheaters.length > 0 ? (
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(450px, 1fr))",
-              gap: "25px",
-              width: "100%"
-            }}
-          >
-            {filteredTheaters.map((theater, index) => (
-              <TheaterCard key={index} theater={theater} movieId={movieId} />
+        {Object.keys(groupedShows).length > 0 ? (
+          <div className="theaters-grid">
+            {Object.values(groupedShows).map((group) => (
+              <TheaterCard
+                key={group.theater._id}
+                theater={group.theater}
+                shows={group.shows}
+              />
             ))}
           </div>
         ) : (
-          <p style={{ fontSize: "1.2rem", color: "#ccc", marginTop: "50px", textAlign: "center" }}>
+          <p className="no-theaters-msg">
             No theaters currently showing this movie.
           </p>
         )}

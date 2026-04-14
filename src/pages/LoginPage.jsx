@@ -1,19 +1,25 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Mail, Lock, ArrowRight } from "lucide-react";
-import "./LoginPage.css";
+import API from "../api.js";
+import "../styles/LoginPage.css";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Email:", email);
-    console.log("Password:", password);
-    // Proceed to seatstage platform
-    navigate("/index");
+    try {
+      const res = await API.post("/users/login", { email, password });
+      if (res.data.message === "Login successful") {
+        navigate("/shows"); // Proceed to main page
+      }
+    } catch (err) {
+      setError(err.response?.data?.message || "Invalid login. Try again.");
+    }
   };
 
   return (
@@ -34,6 +40,7 @@ export default function LoginPage() {
             <p className="subtitle">
               Please enter your credentials to access your stage.
             </p>
+            {error && <p style={{ color: "#ff4d4d", fontSize: "0.9rem", marginTop: "10px", fontWeight: "bold" }}>{error}</p>}
           </div>
 
           <form onSubmit={handleSubmit} className="login-form">

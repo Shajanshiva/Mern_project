@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-// import showsData from "../data/shows";
-import { useState, useEffect } from "react";
-import API from "../api.js"
+import API from "../api.js";
 import ShowsHeader from "../components/ShowsHeader";
 import ShowCard from "../components/ShowCard";
+import "../styles/Shows.css";
 
 const Shows = () => {
   const today = new Date().toLocaleDateString("en-GB", {
@@ -16,43 +15,25 @@ const Shows = () => {
 
   const [showsData, setShowsData] = useState([]);
   useEffect(() => {
-     fetchMovies()
+    fetchMovies();
   }, []);
 
   const fetchMovies = async () => {
-    const res = await API.get("/movies")
-    setShowsData(res.data)
-  }
+    const res = await API.get("/movies");
+    setShowsData(res.data);
+  };
 
   return (
-    <div
-      style={{
-        background:
-          "radial-gradient(circle at top left, rgba(229, 9, 20, 0.1) 0%, #111 60%)",
-        backgroundColor: "#111",
-        minHeight: "100vh",
-        color: "white",
-        fontFamily: "Inter, sans-serif",
-      }}
-    >
+    <div className="shows-page">
       <Header />
 
-      <div
-        style={{ padding: "60px 40px", maxWidth: "1400px", margin: "0 auto" }}
-      >
+      <div className="shows-container">
         <ShowsHeader today={today} />
 
         {/* Movie Grid */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
-            gap: "30px",
-            justifyContent: "center",
-          }}
-        >
+        <div className="shows-grid">
           {showsData.map((show) => (
-            <ShowCard key={show.id} show={show} />
+            <ShowCard key={show._id} show={show} />
           ))}
         </div>
       </div>

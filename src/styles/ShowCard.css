@@ -1,0 +1,136 @@
+.show-card {
+  background-color: #181818;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  border: 1px solid #262626;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.show-card:hover {
+  transform: translateY(-8px);
+  border-color: #444;
+}
+
+.show-rating-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: rgba(0,0,0,0.7);
+  backdrop-filter: blur(5px);
+  padding: 5px 12px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  z-index: 2;
+  color: white;
+}
+
+.show-rating-badge span {
+  color: white;
+  font-size: 0.9rem;
+}
+
+.show-image-wrapper {
+  width: 100%;
+  height: 380px;
+  overflow: hidden;
+  position: relative;
+}
+
+.show-image-gradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(to top, #181818, transparent);
+  z-index: 1;
+}
+
+.show-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.show-card-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  position: relative;
+  z-index: 2;
+}
+
+.show-genres {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.genre-primary {
+  padding: 3px 8px;
+  border: 1px solid rgba(229, 9, 20, 0.5);
+  color: #e50914;
+  font-size: 0.65rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border-radius: 4px;
+}
+
+.genre-secondary {
+  color: #777;
+  font-size: 0.65rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.show-title {
+  margin: 0 0 25px 0;
+  color: white;
+  font-size: 1.4rem;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.book-btn-wrapper {
+  margin-top: auto;
+}
+
+.book-btn {
+  width: 100%;
+  padding: 15px;
+  background-color: #e50914;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 15px rgba(229, 9, 20, 0.4);
+  transition: all 0.2s ease;
+}
+
+.book-btn:hover {
+  background-color: #ff0000;
+  transform: scale(1.02);
+}
+
+.book-btn span {
+  font-size: 1.1rem;
+}

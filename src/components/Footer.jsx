@@ -1,52 +1,41 @@
 import React from "react";
+import "../styles/Footer.css";
 
 const Footer = () => {
   return (
-    <div style={{ backgroundColor: "#121212", color: "white", padding: "40px 0px" }}>
-      <hr style={{ border: "0.5px solid rgba(255, 255, 255, 0.1)", marginBottom: "30px", margin: "0 40px" }} />
+    <div className="footer-container">
+      <hr className="footer-divider" />
 
-      <div style={{
-        display: "flex",
-        justifyContent: "space-evenly",
-        alignItems: "flex-start",
-        flexWrap: "wrap",
-        padding: "0 20px"
-      }}>
+      <div className="footer-content">
         {/* Branding Column */}
-        <div style={{ width: "300px", marginBottom: "30px" }}>
-          <h2 style={{ color: "red", marginBottom: "15px" }}>StageSeat</h2>
-          <p style={{ color: "lightgray", lineHeight: "1.6" }}>
+        <div className="footer-column branding-column">
+          <h2 className="branding-title">StageSeat</h2>
+          <p className="branding-text">
             The premium theatre experience. Book tickets for the best shows in
             town with ease and eloquence.
           </p>
         </div>
 
         {/* Explore Column */}
-        <div style={{ marginBottom: "30px" }}>
-          <h3 style={{ color: "white", marginBottom: "15px" }}>Explore</h3>
-          <p style={{ color: "lightgray", margin: "8px 0", cursor: 'pointer' }}>Featured Shows</p>
-          <p style={{ color: "lightgray", margin: "8px 0", cursor: 'pointer' }}>Popular Theaters</p>
-          <p style={{ color: "lightgray", margin: "8px 0", cursor: 'pointer' }}>Gift Cards</p>
-          <p style={{ color: "lightgray", margin: "8px 0", cursor: 'pointer' }}>Offers</p>
+        <div className="footer-column">
+          <h3>Explore</h3>
+          <p className="footer-link">Featured Shows</p>
+          <p className="footer-link">Popular Theaters</p>
+          <p className="footer-link">Gift Cards</p>
+          <p className="footer-link">Offers</p>
         </div>
 
         {/* Support Column */}
-        <div style={{ marginBottom: "30px" }}>
-          <h3 style={{ color: "white", marginBottom: "15px" }}>Support</h3>
-          <p style={{ color: "lightgray", margin: "8px 0", cursor: 'pointer' }}>Help Center</p>
-          <p style={{ color: "lightgray", margin: "8px 0", cursor: 'pointer' }}>Terms of Service</p>
-          <p style={{ color: "lightgray", margin: "8px 0", cursor: 'pointer' }}>Privacy Policy</p>
-          <p style={{ color: "lightgray", margin: "8px 0", cursor: 'pointer' }}>Contact Us</p>
+        <div className="footer-column">
+          <h3>Support</h3>
+          <p className="footer-link">Help Center</p>
+          <p className="footer-link">Terms of Service</p>
+          <p className="footer-link">Privacy Policy</p>
+          <p className="footer-link">Contact Us</p>
         </div>
       </div>
 
-      <div style={{
-        textAlign: "center",
-        marginTop: "40px",
-        paddingTop: "20px",
-        borderTop: "1px solid rgba(255, 255, 255, 0.05)",
-        color: "gray"
-      }}>
+      <div className="footer-bottom">
         <p>© 2026 StageSeat. All rights reserved</p>
       </div>
     </div>

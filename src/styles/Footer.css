@@ -1,0 +1,55 @@
+.footer-container {
+  background-color: #121212;
+  color: white;
+  padding: 40px 0;
+}
+
+.footer-divider {
+  border: 0.5px solid rgba(255, 255, 255, 0.1);
+  margin: 0 40px 30px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 0 20px;
+}
+
+.footer-column {
+  margin-bottom: 30px;
+}
+
+.branding-column {
+  width: 300px;
+}
+
+.branding-title {
+  color: red;
+  margin-bottom: 15px;
+}
+
+.branding-text {
+  color: lightgray;
+  line-height: 1.6;
+}
+
+.footer-column h3 {
+  color: white;
+  margin-bottom: 15px;
+}
+
+.footer-link {
+  color: lightgray;
+  margin: 8px 0;
+  cursor: pointer;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  color: gray;
+}
