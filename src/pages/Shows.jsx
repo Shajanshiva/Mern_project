@@ -1,8 +1,9 @@
 import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import showsData from "../data/shows";
-// import {useState, useEffect} from "react";
+// import showsData from "../data/shows";
+import { useState, useEffect } from "react";
+import API from "../api.js"
 import ShowsHeader from "../components/ShowsHeader";
 import ShowCard from "../components/ShowCard";
 
@@ -13,13 +14,15 @@ const Shows = () => {
     year: "numeric",
   });
 
-  // const [showsData, setShowsData] = useState([]);
-  // useEffect(() => {
-  //   fetch("http://localhost:5000/api/movies")
-  //     .then((response) => response.json())
-  //     .then((data) => setShowsData(data))
-  //     .catch((error) => console.error("Error fetching shows data:", error));
-  // }, []);
+  const [showsData, setShowsData] = useState([]);
+  useEffect(() => {
+     fetchMovies()
+  }, []);
+
+  const fetchMovies = async () => {
+    const res = await API.get("/movies")
+    setShowsData(res.data)
+  }
 
   return (
     <div

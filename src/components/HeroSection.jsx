@@ -43,7 +43,7 @@ const HeroSection = () => {
             fontFamily: "Georgia, 'Times New Roman', Times, serif",
           }}
         >
-          The Grand Opera
+          Movie ticket booking
         </h1>
         <p
           style={{
@@ -53,8 +53,8 @@ const HeroSection = () => {
             lineHeight: "1.6",
           }}
         >
-          Experience the timeless masterpiece in its most spectacular
-          production yet. Winner of 7 Tony Awards including Best Musical.
+          {/* Experience the timeless masterpiece in its most spectacular
+          production yet. Winner of 7 Tony Awards including Best Musical. */}
         </p>
         <div style={{ display: "flex", gap: "20px" }}>
           <button

@@ -1,7 +1,22 @@
 import React from "react";
-import movies from "../data/indexdata";
+import API from "../api.js"
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+// import movies from "../data/indexdata";
 
 const TrendingShows = () => {
+  const [movies, setMovies] = useState([])
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    fetchMovies()
+  }, [])
+  
+  const fetchMovies = async () => {
+    const res = await API.get("/movies");
+    setMovies(res.data.slice(0, 5))
+    
+  }
   return (
     <div>
       <div
@@ -49,6 +64,7 @@ const TrendingShows = () => {
           return (
             <div
               key={movie.id}
+              onClick={() => navigate(`/theaters/${movie.id}`)}
               style={{
                 display: "flex",
                 flexDirection: "column",

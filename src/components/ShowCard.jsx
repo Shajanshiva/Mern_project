@@ -141,7 +141,7 @@ const ShowCard = ({ show }) => {
 
         <div style={{ marginTop: "auto" }}>
           <Link
-            to={`/theaters/${show.id}`}
+            to={`/theaters/${show._id}`}
             style={{ textDecoration: "none" }}
           >
             <button
