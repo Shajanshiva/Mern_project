@@ -15,7 +15,8 @@ export default function LoginPage() {
     try {
       const res = await API.post("/users/login", { email, password });
       if (res.data.message === "Login successful") {
-        navigate("/shows"); // Proceed to main page
+        localStorage.setItem("user", JSON.stringify(res.data.user)); // Save user to storage
+        navigate("/index"); // Proceed to Home page
       }
     } catch (err) {
       setError(err.response?.data?.message || "Invalid login. Try again.");
