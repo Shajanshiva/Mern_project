@@ -13,10 +13,11 @@ const Theaters = () => {
   const [groupedShows, setGroupedShows] = useState({});
   const [movie, setMovie] = useState(null);
 
-  useEffect(() => {
-    getMovie();
-    getShows();
-  }, []);
+
+    useEffect(() => {
+      getMovie();
+      getShows();
+    }, []);
 
   const getMovie = async () => {
     try {
@@ -51,6 +52,7 @@ const Theaters = () => {
       console.log(error);
     }
   };
+
 
   return (
     <div className="theaters-page">
